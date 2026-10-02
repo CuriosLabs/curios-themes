@@ -18,9 +18,11 @@ lint:
 # Complete publish process: lint, tag and finally push on github.
 publish VERSION:
   @if git rev-parse "{{VERSION}}" >/dev/null 2>&1; then echo "Warning: Tag {{VERSION}} already exists."; exit 1; fi
-  #git checkout testing
+  gh auth status
+  git checkout testing
   @just lint
   @just tag {{VERSION}}
+  gh pr create --title "Release {{VERSION}}" --body "" --base main --assignee "@me"
 
 # Update version number, create Git commit and tag and push it.
 tag VERSION:
