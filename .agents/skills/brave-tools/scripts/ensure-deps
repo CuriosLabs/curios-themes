@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# .agents/skills/brave-tools/scripts/ensure-deps
+# Ensures that puppeteer-core, ts-node, and typescript are installed globally.
+
+DEPS=("puppeteer-core" "ts-node" "typescript" "eslint" "typescript-eslint")
+
+for dep in "${DEPS[@]}"; do
+  if ! npm list -g "$dep" --depth=0 >/dev/null 2>&1; then
+    echo "$dep not found globally. Installing..."
+    npm i -g "$dep"
+  fi
+done

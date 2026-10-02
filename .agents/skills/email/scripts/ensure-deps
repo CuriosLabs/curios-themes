@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# .agents/skills/email/scripts/ensure-deps
+# Ensures that necessary npm packages are installed globally.
+
+DEPS=("nodemailer" "imapflow" "mailparser" "commander" "ts-node" "typescript")
+
+for dep in "${DEPS[@]}"; do
+  if ! npm list -g "$dep" --depth=0 >/dev/null 2>&1; then
+    echo "$dep not found globally. Installing..."
+    npm i -g "$dep"
+  fi
+done

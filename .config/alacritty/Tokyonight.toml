@@ -1,0 +1,57 @@
+# Custom alacritty theme - Tokyonight Night
+[terminal]
+shell = "/run/current-system/sw/bin/zsh"
+
+[window]
+opacity = 0.95
+
+[font]
+size = 12.0
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrains Mono"
+style = "SemiBold Italic"
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[colors.cursor]
+cursor = '#c0caf5'
+text = '#15161e'
+
+[colors.primary]
+background = '#1a1b26'
+foreground = '#c0caf5'
+
+[colors.selection]
+background = '#33467c'
+text = '#c0caf5'
+
+[colors.normal]
+black = '#15161e'
+red = '#f7768e'
+green = '#9ece6a'
+yellow = '#e0af68'
+blue = '#7aa2f7'
+magenta = '#bb9af7'
+cyan = '#7dcfff'
+white = '#a9b1d6'
+
+[colors.bright]
+black = '#414868'
+red = '#f7768e'
+green = '#9ece6a'
+yellow = '#e0af68'
+blue = '#7aa2f7'
+magenta = '#bb9af7'
+cyan = '#7dcfff'
+white = '#c0caf5'

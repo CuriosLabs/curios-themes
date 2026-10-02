@@ -1,0 +1,57 @@
+# Custom alacritty theme - Hackers Green
+[terminal]
+shell = "/run/current-system/sw/bin/zsh"
+
+[window]
+opacity = 0.95
+
+[font]
+size = 12.0
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrains Mono"
+style = "SemiBold Italic"
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[colors.cursor]
+cursor = '#15d00d'
+text = '#ffffff'
+
+[colors.primary]
+background = '#020f01'
+foreground = '#16b10e'
+
+[colors.selection]
+background = '#d4ffc1'
+text = '#b0b0b0'
+
+[colors.normal]
+black = '#001f0b'
+red = '#c01c28'
+green = '#15d00d'
+yellow = '#15d00d'
+blue = '#15d00d'
+magenta = '#15d00d'
+cyan = '#15d00d'
+white = '#fafafa'
+
+[colors.bright]
+black = '#334843'
+red = '#ed333b'
+green = '#19e20e'
+yellow = '#19e20e'
+blue = '#19e20e'
+magenta = '#19e20e'
+cyan = '#19e20e'
+white = '#fefefe'

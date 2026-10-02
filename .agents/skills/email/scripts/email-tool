@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# .agents/skills/email/scripts/email-tool
+# A bash wrapper to execute email tasks using ts-node.
+
+# Determine the directory of the script
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Ensure global dependencies are installed
+"$DIR/ensure-deps"
+
+# Set NODE_PATH to the global npm root so ts-node can find global packages
+export NODE_PATH="$(npm root -g)"
+
+# Set ts-node to transpile only for performance
+export TS_NODE_TRANSPILE_ONLY=1
+
+# Execute the TypeScript script
+npx ts-node "$DIR/email.ts" "$@"

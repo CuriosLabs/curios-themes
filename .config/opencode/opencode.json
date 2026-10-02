@@ -1,0 +1,34 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  // Settings
+  "permission": {
+    "edit": "ask",
+    "bash": {
+      "*": "ask",
+      "cat *": "allow",
+      "fd *": "allow",
+      "find *": "allow",
+      "git *": "ask",
+      "git commit *": "ask",
+      "git push *": "deny",
+      "grep *": "allow",
+      "ls *": "allow",
+      "rm *": "deny",
+      "sudo *": "deny"
+    },
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "$HOME/.ssh/*": "deny"
+    },
+    "webfetch": "allow",
+    "websearch": "allow"
+  },
+  "autoupdate": false,
+  // LLMs Providers - Adjust to your real configuration
+  "provider": {}
+}

@@ -1,0 +1,28 @@
+{
+  "providers": {
+    "lm-studio": {
+      "baseUrl": "http://localhost:1234/v1",
+      "api": "openai-completions",
+      "apiKey": "0000",
+      "models": [
+        {
+          "id": "nvidia/nemotron-3-nano-4b",
+          "name": "Nemotron 3 Nano 4B (Local)",
+          "reasoning": true,
+          "input": [
+            "text"
+          ]
+        },
+        {
+          "id": "qwen/qwen3.5-9b",
+          "name": "Qwen3.5 9B (Local)",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ]
+        }
+      ]
+    }
+  }
+}

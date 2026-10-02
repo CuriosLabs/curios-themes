@@ -1,0 +1,57 @@
+# Custom alacritty theme - Nord Light
+[terminal]
+shell = "/run/current-system/sw/bin/zsh"
+
+[window]
+opacity = 0.95
+
+[font]
+size = 12.0
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrains Mono"
+style = "SemiBold Italic"
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[colors.primary]
+background = '#eceff4'
+foreground = '#2e3440'
+
+[colors.cursor]
+text = '#eceff4'
+cursor = '#2e3440'
+
+[colors.selection]
+text = '#eceff4'
+background = '#5e81ac'
+
+[colors.normal]
+black = '#3b4252'
+red = '#a0252b'
+green = '#3b6e43'
+yellow = '#966800'
+blue = '#00496d'
+magenta = '#68217c'
+cyan = '#00525a'
+white = '#e5e9f0'
+
+[colors.bright]
+black = '#4c566a'
+red = '#bf616a'
+green = '#a3be8c'
+yellow = '#ebcb8b'
+blue = '#81a1c1'
+magenta = '#b48ead'
+cyan = '#8fbcbb'
+white = '#eceff4'

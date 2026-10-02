@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# .agents/skills/brave-tools/scripts/ensure-browser
+# Ensures a browser is running with remote debugging on port 9222.
+
+PORT=9222
+
+# Check if something is already listening on the port
+if ! ss -tln | grep -q ":$PORT "; then
+  BRAVE_EXE=$(which brave 2>/dev/null)
+
+  if [ -z "$BRAVE_EXE" ]; then
+    echo "Error: Brave browser not found. Please install it or ensure it is in your PATH."
+    exit 1
+  fi
+
+  # AppArmor only allows user-data under ~/.config/BraveSoftware (not /tmp).
+  # Prune leftover AI profiles when no debug browser is running so they do
+  # not accumulate across reboots the way /tmp would have auto-cleared them.
+  PROFILE_ROOT="$HOME/.config/BraveSoftware"
+  for d in "$PROFILE_ROOT"/Brave-AI-Profile-*; do
+    [ -e "$d" ] || continue
+    rm -rf "$d"
+  done
+
+  PROFILE_DIR=$(mktemp -d -p "$PROFILE_ROOT" Brave-AI-Profile-XXXXXX)
+  DEFAULT_PROFILE="$PROFILE_ROOT/Brave-Browser"
+  if [ -d "$DEFAULT_PROFILE" ]; then
+    echo "Copying default Brave profile to $PROFILE_DIR..."
+    cp -rp "$DEFAULT_PROFILE/." "$PROFILE_DIR/"
+    rm -f "$PROFILE_DIR"/Singleton*
+  fi
+
+  echo "Starting Brave browser with --remote-debugging-port=$PORT and --user-data-dir=$PROFILE_DIR..."
+  # Launch in a new session and detached mode
+  setsid "$BRAVE_EXE" --remote-debugging-port=$PORT --user-data-dir="$PROFILE_DIR" >/dev/null 2>&1 &
+
+  # Wait for the port to open (up to 15 seconds)
+  for i in {1..15}; do
+    if ss -tln | grep -q ":$PORT "; then
+      echo "Browser started successfully."
+      exit 0
+    fi
+    sleep 1
+  done
+
+  echo "Error: Timed out waiting for browser to start on port $PORT."
+  echo "Allow remote debugging tool for Brave with the command:"
+  echo "sudo curios-update --update-modules curios.desktop.browser.brave.remoteDebuggingAllowed true"
+  echo "OR make sure to check the 'Allow remote debugging for this browser instance' box in 'brave://inspect/#remote-debugging'"
+  exit 1
+else
+  # Optional: could check if it's actually a browser, but usually port 9222 is reserved for this.
+  exit 0
+fi

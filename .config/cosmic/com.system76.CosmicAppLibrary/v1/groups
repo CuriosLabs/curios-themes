@@ -1,0 +1,137 @@
+[
+    (
+        name: "Chat",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "InstantMessaging",
+                "Chat",
+            ],
+            exclude: [],
+            include: [
+                "com.discordapp.Discord",
+            ],
+        ),
+    ),
+    (
+        name: "DevOps",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Development",
+            ],
+            exclude: [],
+            include: [],
+        ),
+    ),
+    (
+        name: "Office",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Office",
+            ],
+            exclude: [],
+            include: [],
+        ),
+    ),
+    (
+        name: "Finance",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Finance",
+            ],
+            exclude: [],
+            include: [],
+        ),
+    ),
+    (
+        name: "AI",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Science",
+                "ArtificialIntelligence",
+            ],
+            exclude: [],
+            include: [],
+        ),
+    ),
+    (
+        name: "Games",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Game",
+            ],
+            exclude: [],
+            include: [],
+        ),
+    ),
+    (
+        name: "Studio",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Audio",
+                "Video",
+                "AudioVideo",
+                "AudioVideoEditing",
+                "Graphics",
+                "2DGraphics",
+                "3DGraphics",
+                "Photography",
+            ],
+            exclude: [],
+            include: [],
+        ),
+    ),
+    (
+        name: "Networks",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Network",
+            ],
+            exclude: [
+                "com.discordapp.Discord",
+                "brave-browser",
+            ],
+            include: [],
+        ),
+    ),
+    (
+        name: "cosmic-system",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "System",
+            ],
+            exclude: [
+                "com.system76.CosmicStore",
+                "com.system76.CosmicTerm",
+            ],
+            include: [
+                "gnome-language-selector",
+                "im-config",
+                "org.freedesktop.IBus.Setup",
+                "system76-driver",
+            ],
+        ),
+    ),
+    (
+        name: "cosmic-utilities",
+        icon: "folder-symbolic",
+        filter: Categories(
+            categories: [
+                "Utility",
+            ],
+            exclude: [
+                "com.system76.CosmicEdit",
+                "com.system76.CosmicFiles",
+            ],
+            include: [],
+        ),
+    ),
+]
