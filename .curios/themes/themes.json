@@ -1,0 +1,103 @@
+{
+  "themes": {
+    "Catppuccin Macchiato": {
+      "alacritty_theme": "~/.config/alacritty/Catppuccin-Macchiato.toml",
+      "color": "#24273a",
+      "cosmic_theme": "~/.curios/themes/Catppuccin-Macchiato.ron",
+      "ghostty_theme": "~/.config/ghostty/Catppuccin-Macchiato.config",
+      "herdr": "catppuccin",
+      "nvim": "catppuccin-macchiato",
+      "tui": "catppuccin-macchiato",
+      "wallpapers": "~/.curios/wallpapers/catppuccin/",
+      "zed": "Catppuccin-Macchiato"
+    },
+    "Everforest Medium": {
+      "alacritty_theme": "~/.config/alacritty/Everforest-Medium.toml",
+      "color": "#2d353b",
+      "cosmic_theme": "~/.curios/themes/Everforest-Medium.ron",
+      "ghostty_theme": "~/.config/ghostty/Everforest-Medium.config",
+      "herdr": "kanagawa-lotus",
+      "nvim": "everforest",
+      "tui": "everforest",
+      "wallpapers": "~/.curios/wallpapers/everforest/",
+      "zed": "Everforest-Medium"
+    },
+    "Gruvbox Dark": {
+      "alacritty_theme": "~/.config/alacritty/Gruvbox-Dark.toml",
+      "color": "#282828",
+      "cosmic_theme": "~/.curios/themes/Gruvbox-Dark.ron",
+      "ghostty_theme": "~/.config/ghostty/Gruvbox-Dark.config",
+      "herdr": "gruvbox",
+      "nvim": "gruvbox",
+      "tui": "gruvbox",
+      "wallpapers": "~/.curios/wallpapers/gruvbox/",
+      "zed": "Gruvbox-Dark"
+    },
+    "Hackers": {
+      "alacritty_theme": "~/.config/alacritty/Hackers-Green.toml",
+      "color": "#000000",
+      "cosmic_theme": "~/.curios/themes/Hackers-Green.ron",
+      "ghostty_theme": "~/.config/ghostty/Hackers-Green.config",
+      "herdr": "terminal",
+      "nvim": "melange",
+      "tui": "matrix",
+      "wallpapers": "~/.curios/wallpapers/hackers/",
+      "zed": "Hackers-Green"
+    },
+    "Kanagawa": {
+      "alacritty_theme": "~/.config/alacritty/Kanagawa.toml",
+      "color": "#1f1f28",
+      "cosmic_theme": "~/.curios/themes/Kanagawa.ron",
+      "ghostty_theme": "~/.config/ghostty/Kanagawa.config",
+      "herdr": "kanagawa",
+      "nvim": "kanagawa",
+      "tui": "kanagawa",
+      "wallpapers": "~/.curios/wallpapers/kanagawa/",
+      "zed": "Kanagawa"
+    },
+    "Nord Dark": {
+      "alacritty_theme": "~/.config/alacritty/Nord-Dark.toml",
+      "color": "#2e3440",
+      "cosmic_theme": "~/.curios/themes/Nord-Dark.ron",
+      "ghostty_theme": "~/.config/ghostty/Nord-Dark.config",
+      "herdr": "nord",
+      "nvim": "nord",
+      "tui": "nord",
+      "wallpapers": "~/.curios/wallpapers/nord-dark/",
+      "zed": "Nord-Dark"
+    },
+    "Nord Light": {
+      "alacritty_theme": "~/.config/alacritty/Nord-Light.toml",
+      "color": "#eceff4",
+      "cosmic_theme": "~/.curios/themes/Nord-Light.ron",
+      "ghostty_theme": "~/.config/ghostty/Nord-Light.config",
+      "herdr": "one-light",
+      "nvim": "nord",
+      "tui": "nord",
+      "wallpapers": "~/.curios/wallpapers/nord-light/",
+      "zed": "Nord-Light"
+    },
+    "One Dark": {
+      "alacritty_theme": "~/.config/alacritty/One-Dark.toml",
+      "color": "#20252c",
+      "cosmic_theme": "~/.curios/themes/One-Dark.ron",
+      "ghostty_theme": "~/.config/ghostty/One-Dark.config",
+      "herdr": "one-dark",
+      "nvim": "onedark",
+      "tui": "one-dark",
+      "wallpapers": "~/.curios/wallpapers/one-dark/",
+      "zed": "One-Dark"
+    },
+    "Tokyo Night": {
+      "alacritty_theme": "~/.config/alacritty/Tokyonight.toml",
+      "color": "#1a1b26",
+      "cosmic_theme": "~/.curios/themes/Tokyonight.ron",
+      "ghostty_theme": "~/.config/ghostty/Tokyonight.config",
+      "herdr": "tokyo-night",
+      "nvim": "tokyonight",
+      "tui": "tokyonight",
+      "wallpapers": "~/.curios/wallpapers/tokyo-night/",
+      "zed": "Tokyonight"
+    }
+  }
+}
