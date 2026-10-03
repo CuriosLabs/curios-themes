@@ -1,12 +1,12 @@
 ---
 name: curios
 description:
-  Manage CuriOS a Linux distribution based on NixOS. Use it when the user asks to
+  Manage CuriOS, a Linux distribution based on NixOS. Use it when the user asks to
   do a system update or upgrade, add or remove a package, check if a package is
   installed, search for a package name, change or check a system or module
   configuration or NixOS option using the `curios-update` tool.
-  Install and manage CuriOS dotfiles, themes, and COSMIC desktop settings using
-  the `curios-dotfiles` tool.
+  Install and manage dotfiles, themes, wallpapers, and COSMIC desktop settings
+  using the `curios-dotfiles` tool.
 metadata:
   author: CuriosLabs
   version: "1.4.0"
@@ -14,14 +14,14 @@ metadata:
 
 # Curios System Manager Skill
 
-This skill provides a comprehensive interface for managing the CuriOS Linux system.
-A Linux distribution based on NixOS. It leverages the `curios-update` utility to
+This skill provides a comprehensive interface for managing the CuriOS Linux system,
+a Linux distribution based on NixOS. It leverages the `curios-update` utility to
 perform system-level operations.
 CuriOS follows a highly modular architecture, leveraging Nix modules to define
 its system configuration.
-This skill also allows the agent to install and configure CuriOS-specific dotfiles
-and themes for COSMIC desktop environment. It leverages the `curios-dotfiles`
-utility.
+This skill also allows the agent to install and configure CuriOS-specific dotfiles,
+wallpapers, and themes for the COSMIC desktop environment. It leverages the
+`curios-dotfiles` utility.
 
 ## Quick reference
 
@@ -32,23 +32,23 @@ utility.
 
 | Task | Command |
 |------|---------|
-| Update the whole system | `sudo curios-update --update` |
-| Check if a new version of the distribution is available | `curios-update --check` |
-| Upgrade to the latest distribution version | `sudo curios-update --upgrade` |
+| Update all Nix packages and flakes, then garbage-collect | `sudo curios-update --update` |
+| Upgrade to the latest distribution version and update | `sudo curios-update --upgrade` |
 | Search for a CuriOS module | `curios-update --search-modules <name>` |
 | Query a NixOS/CuriOS option | `curios-update --nixos-option <key>` |
 | Update a CuriOS module setting | `sudo curios-update --update-module <key> <value>` |
-| Show all CuriOS modules settings as JSON | `curios-update --show-modules` |
-| Search for a NixOS package | `curios-update --search-pkgs <name>` |
+| Show all CuriOS module settings as JSON | `curios-update --show-modules` |
+| Search for a NixOS package by name | `curios-update --search-pkgs <name>` |
 | Install a NixOS package | `sudo curios-update --add-pkg <attr_name>` |
-| Determine system language | `curios-update --nixos-option curios.system.keyboard` |
-| Apply a theme (One-Dark, Catppuccin-Macchiato, Tokyonight) and dotfiles | `curios-dotfiles --lang <language> --themes <theme> <directory>` |
+| Determine system language/keyboard settings | `curios-update --nixos-option curios.system.keyboard` |
+| List available themes | `curios-dotfiles --list` |
+| Apply a theme (e.g. One Dark, Catppuccin Macchiato, Tokyo Night) | `curios-dotfiles --themes <theme> "$HOME"` |
 
 ## Common workflows
 
 ### Update the system
 
-Update the entire system, all packages and Nix flakes and do a Nix garbage collector:
+Update the entire system, all packages and Nix flakes, and run Nix garbage collection:
 
 ```bash
 sudo curios-update --update
@@ -56,22 +56,28 @@ sudo curios-update --update
 
 ### Upgrade the system
 
-Check if a new version of CuriOS is available, if so upgrade:
+Check if a new version of CuriOS is available and, if so, upgrade (this also runs an update):
 
 ```bash
-curios-update --check
 sudo curios-update --upgrade
 ```
 
+`curios-update` clones the CuriOS source from its Git repository during an upgrade.
+The Git repository URL is read from the option "curios.core.source.url"; see
+`curios-update --nixos-option curios.core.source.url`.
+The repository branch is set by "curios.core.source.branch", which defaults to "stable".
+The "testing" branch should only be used by developers contributing to the CuriOS project.
+The "unstable" branch follows the NixOS unstable channel. Things may break; use it with caution.
+
 ### System modules and configuration
 
-When installing or checking a package, **FIRST** it **MUST** be verify if the package
-is defined as a CuriOS **module**. This modules are defined as JSON key, i.e:
-"curios.desktop.browser.firefox.enable" for the Firefox package, this key will be
+When installing or checking a package, you **MUST** first verify whether the package
+is defined as a CuriOS **module**. These modules are defined as JSON keys, e.g.
+"curios.desktop.browser.firefox.enable" for the Firefox package. This key is
 used as a parameter for the `--update-module` and `--nixos-option` options.
 
 ```bash
-# Search for the module key by name, JSON output choose the leaf key not the branch.
+# Search for the module key by name. JSON output: choose the leaf key, not the branch.
 curios-update --search-modules <name>
 # Query the module option to know more (works for any NixOS option too)
 curios-update --nixos-option <key>
@@ -91,24 +97,24 @@ curios-update --show-modules
 and installed as a regular NixOS package:
 
 ```bash
-# Notice the 'package_attr_name' value of the JSON output, first result should be the best match
-# Also notice the 'package_programs' value is a JSON array of programs provided by this package.
+# Notice the 'package_attr_name' value of the JSON output; the first result should be the best match.
+# Also notice the 'package_programs' value, a JSON array of programs provided by this package.
 curios-update --search-pkgs <name>
-# Pass the 'package_attr_name' as a parameter to '--add-pkg' option.
+# Pass the 'package_attr_name' as a parameter to the '--add-pkg' option.
 sudo curios-update --add-pkg <pkg_attr_name>
 ```
 
 ## Flatpak
 
-IF an application does NOT exist as a CuriOS module OR a NixOS package THEN it can
-be installed as a flatpak. Curios came with "flathub" and "cosmic" repositories pre-configured.
+IF an application does NOT exist as a CuriOS module OR a NixOS package, THEN it can
+be installed as a Flatpak. CuriOS comes with the "flathub" and "cosmic" repositories pre-configured.
 
 ```bash
 # List remote repositories
 flatpak remotes
 # List installed apps
 flatpak list --app
-# List available app on flathub remote repository
+# List available apps on the Flathub remote repository
 flatpak remote-ls flathub
 # Install an app
 flatpak install flathub <app_ID>
@@ -116,7 +122,7 @@ flatpak install flathub <app_ID>
 flatpak run <app_ID>
 ```
 
-A GUI for the flatpak store is also available with:
+A GUI for the Flatpak store is also available with:
 
 ```bash
 cosmic-store
@@ -124,35 +130,44 @@ cosmic-store
 
 ## Change desktop theme, keyboard layout, update dotfiles
 
-- **Discovery**: Use `curios-dotfiles --help` to check available themes and options.
-- Available themes: `Catppuccin-Macchiato`, `Everforest-Medium`, `Gruvbox-Dark`,
-  `Hackers-Green`, `Kanagawa`, `Nord-Dark`, `Nord-Light`, `One-Dark`, `Tokyonight`.
-- Default keyboard layout is `us`.
-- Default theme is `One-Dark`.
+- **Discovery**: Use `curios-dotfiles --help` to check options.
+- List themes: use `curios-dotfiles --list` to check available themes.
+- Default theme is `One Dark`.
 
-Changing the COSMIC desktop theme and keyboard layout:
+Change the current theme with:
 
 ```bash
-# Determine the current keyboard layout/language
-curios-update --nixos-option curios.system.keyboard | grep -A 1 "Value"
-# Change the user $HOME desktop theme to Gruvbox-Dark
-curios-dotfiles --lang <language> --themes 'Gruvbox-Dark' $HOME
+# Change the user's $HOME desktop theme to Gruvbox Dark
+curios-dotfiles --themes 'Gruvbox Dark' $HOME
 ```
+
+Theme configuration is read from `$HOME/.curios/themes/themes.json`. It lists
+all themes available through `curios-dotfiles --list`. It defines the theme files used
+by the COSMIC desktop environment (`*.ron` files), Alacritty, and Ghostty. It also
+defines the theme names used by `herdr`, `nvim`, `opencode`, and `zeditor`, and the
+base color for the Brave browser.
+Wallpapers are stored under `$HOME/.curios/wallpapers/`. The theme configuration file
+also defines the wallpapers directory with the "wallpapers" key, so a theme change
+can set the wallpaper.
+
+Change the COSMIC keyboard layout (e.g. French) with: `curios-dotfiles --lang fr`
+The current system keyboard setting can be found with: `curios-update --nixos-option curios.system.keyboard`
 
 ## TUI manager
 
 CuriOS comes with a TUI: curios-manager (shortcut: Super+Return).
 
-Launchable with: `xdg-terminal-exec curios-manager`
+Launch it with: `xdg-terminal-exec curios-manager`
 
 From the TUI the user can update and upgrade the system, add or remove packages,
-update the hardware firmware, setup a backup, monitor the system (disk usage,
-btop, inspect network connections). Change desktop theme, enroll keys for PAM or
-full disk decryption, enable AppArmor and enable secure boot.
+update the hardware firmware, set up a backup, and monitor the system (disk usage,
+btop, inspect network connections). They can also change the desktop theme, enroll
+keys for PAM or full-disk decryption, enable AppArmor, and enable secure boot.
 
-## Online documentation
+## Documentation
 
 Up-to-date online [documentation is here](https://github.com/CuriosLabs/CuriOS/blob/master/docs/index.md).
+The same documentation should be available offline here: `/etc/nixos/docs/`.
 
 ## When to use me
 
@@ -164,7 +179,7 @@ Up-to-date online [documentation is here](https://github.com/CuriosLabs/CuriOS/b
 - When inspecting current NixOS or CuriOS configuration options.
 - When a user wants to install the CuriOS dotfiles in their home directory.
 - When a user wants to change their overall system theme (colors for Alacritty,
-  Neovim, Zed, etc.).
+  Neovim, Zed, the COSMIC desktop environment, etc.).
 - When a user needs to set their COSMIC keyboard layout during dotfiles installation.
 
 ## Advanced usage
