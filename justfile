@@ -26,6 +26,7 @@ publish VERSION:
 
 # Update version number, create Git commit and tag and push it.
 tag VERSION:
+  sed -i 's/^  "version": "[^"]*"/  "version": "{{VERSION}}"/' .curios/themes/themes.json
   git commit -a -m "Release {{VERSION}}"
   @echo "Tagging version: {{VERSION}}"
   git tag -a {{VERSION}} -m "Release {{VERSION}}"
