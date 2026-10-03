@@ -25,7 +25,7 @@ family = "JetBrains Mono"
 style = "Regular"
 
 [colors.primary]
-background = '#eceff4'
+background = '#d8dee9'
 foreground = '#2e3440'
 
 [colors.cursor]
@@ -44,7 +44,7 @@ yellow = '#966800'
 blue = '#00496d'
 magenta = '#68217c'
 cyan = '#00525a'
-white = '#e5e9f0'
+white = '#1d222d'
 
 [colors.bright]
 black = '#4c566a'
@@ -54,4 +54,4 @@ yellow = '#ebcb8b'
 blue = '#81a1c1'
 magenta = '#b48ead'
 cyan = '#8fbcbb'
-white = '#eceff4'
+white = '#d8dee9'
