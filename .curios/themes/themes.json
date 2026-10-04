@@ -12,6 +12,17 @@
       "wallpapers": "~/.curios/wallpapers/catppuccin/",
       "zed": "Catppuccin-Macchiato"
     },
+    "COSMIC Dark": {
+      "alacritty_theme": "~/.config/alacritty/COSMIC-Dark.toml",
+      "color": "#1b1b1b",
+      "cosmic_theme": "~/.curios/themes/COSMIC-Dark.ron",
+      "ghostty_theme": "~/.config/ghostty/One-Dark.config",
+      "herdr": "one-dark",
+      "nvim": "onedark",
+      "tui": "onedark",
+      "wallpapers": "/run/current-system/sw/share/backgrounds/cosmic/",
+      "zed": "One-Dark"
+    },
     "Everforest Medium": {
       "alacritty_theme": "~/.config/alacritty/Everforest-Medium.toml",
       "color": "#2d353b",
