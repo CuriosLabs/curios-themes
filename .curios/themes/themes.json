@@ -80,7 +80,7 @@
     },
     "Nord Light": {
       "alacritty_theme": "~/.config/alacritty/Nord-Light.toml",
-      "color": "#eceff4",
+      "color": "#d8dee9",
       "cosmic_theme": "~/.curios/themes/Nord-Light.ron",
       "ghostty_theme": "~/.config/ghostty/Nord-Light.config",
       "herdr": "one-light",
