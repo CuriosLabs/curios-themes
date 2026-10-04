@@ -27,6 +27,7 @@ It comes pre-installed with [CuriOS](https://github.com/CuriosLabs/CuriOS).
 Available themes are:
 
 - Catppuccin Macchiato
+- COSMIC Dark
 - Everforest Medium
 - Gruvbox Dark
 - Hackers Green
