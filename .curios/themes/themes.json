@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "themes": {
     "Catppuccin Macchiato": {
       "alacritty_theme": "~/.config/alacritty/Catppuccin-Macchiato.toml",
