@@ -6,9 +6,7 @@
       "color": "#24273a",
       "cosmic_theme": "~/.curios/themes/Catppuccin-Macchiato.ron",
       "ghostty_theme": "~/.config/ghostty/Catppuccin-Macchiato.config",
-      "herdr": "catppuccin",
       "nvim": "catppuccin-macchiato",
-      "tui": "catppuccin-macchiato",
       "wallpapers": "~/.curios/wallpapers/catppuccin/",
       "zed": "Catppuccin-Macchiato"
     },
@@ -17,9 +15,7 @@
       "color": "#1b1b1b",
       "cosmic_theme": "~/.curios/themes/COSMIC-Dark.ron",
       "ghostty_theme": "~/.config/ghostty/One-Dark.config",
-      "herdr": "one-dark",
       "nvim": "onedark",
-      "tui": "onedark",
       "wallpapers": "/run/current-system/sw/share/backgrounds/cosmic/",
       "zed": "One-Dark"
     },
@@ -28,9 +24,7 @@
       "color": "#2d353b",
       "cosmic_theme": "~/.curios/themes/Everforest-Medium.ron",
       "ghostty_theme": "~/.config/ghostty/Everforest-Medium.config",
-      "herdr": "kanagawa-lotus",
       "nvim": "everforest",
-      "tui": "everforest",
       "wallpapers": "~/.curios/wallpapers/everforest/",
       "zed": "Everforest-Medium"
     },
@@ -39,9 +33,7 @@
       "color": "#282828",
       "cosmic_theme": "~/.curios/themes/Gruvbox-Dark.ron",
       "ghostty_theme": "~/.config/ghostty/Gruvbox-Dark.config",
-      "herdr": "gruvbox",
       "nvim": "gruvbox",
-      "tui": "gruvbox",
       "wallpapers": "~/.curios/wallpapers/gruvbox/",
       "zed": "Gruvbox-Dark"
     },
@@ -50,9 +42,7 @@
       "color": "#000000",
       "cosmic_theme": "~/.curios/themes/Hackers-Green.ron",
       "ghostty_theme": "~/.config/ghostty/Hackers-Green.config",
-      "herdr": "terminal",
       "nvim": "melange",
-      "tui": "matrix",
       "wallpapers": "~/.curios/wallpapers/hackers/",
       "zed": "Hackers-Green"
     },
@@ -61,9 +51,7 @@
       "color": "#1f1f28",
       "cosmic_theme": "~/.curios/themes/Kanagawa.ron",
       "ghostty_theme": "~/.config/ghostty/Kanagawa.config",
-      "herdr": "kanagawa",
       "nvim": "kanagawa",
-      "tui": "kanagawa",
       "wallpapers": "~/.curios/wallpapers/kanagawa/",
       "zed": "Kanagawa"
     },
@@ -72,9 +60,7 @@
       "color": "#2e3440",
       "cosmic_theme": "~/.curios/themes/Nord-Dark.ron",
       "ghostty_theme": "~/.config/ghostty/Nord-Dark.config",
-      "herdr": "nord",
       "nvim": "nord",
-      "tui": "nord",
       "wallpapers": "~/.curios/wallpapers/nord-dark/",
       "zed": "Nord-Dark"
     },
@@ -83,9 +69,7 @@
       "color": "#d8dee9",
       "cosmic_theme": "~/.curios/themes/Nord-Light.ron",
       "ghostty_theme": "~/.config/ghostty/Nord-Light.config",
-      "herdr": "one-light",
       "nvim": "nord",
-      "tui": "nord",
       "wallpapers": "~/.curios/wallpapers/nord-light/",
       "zed": "Nord-Light"
     },
@@ -94,9 +78,7 @@
       "color": "#20252c",
       "cosmic_theme": "~/.curios/themes/One-Dark.ron",
       "ghostty_theme": "~/.config/ghostty/One-Dark.config",
-      "herdr": "one-dark",
       "nvim": "onedark",
-      "tui": "one-dark",
       "wallpapers": "~/.curios/wallpapers/one-dark/",
       "zed": "One-Dark"
     },
@@ -105,9 +87,7 @@
       "color": "#1a1b26",
       "cosmic_theme": "~/.curios/themes/Tokyonight.ron",
       "ghostty_theme": "~/.config/ghostty/Tokyonight.config",
-      "herdr": "tokyo-night",
       "nvim": "tokyonight",
-      "tui": "tokyonight",
       "wallpapers": "~/.curios/wallpapers/tokyo-night/",
       "zed": "Tokyonight"
     }

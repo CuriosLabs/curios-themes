@@ -3,8 +3,7 @@ status_indicators = "symbols"
 show_agent_labels_on_pane_borders = true
 
 [theme]
-name = "one-dark"
-auto_switch = false
+auto_switch = true
 
 [ui.toast]
-delivery = "herdr"
+delivery = "system"
