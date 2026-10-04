@@ -11,7 +11,7 @@ It comes pre-installed with [CuriOS](https://github.com/CuriosLabs/CuriOS).
 
 ## Features
 
-- COSMIC desktop environment configuration files.
+- COSMIC desktop environment configuration files and themes.
 - Alacritty and Ghostty terminal themes.
 - [OpenCode](https://opencode.ai/) configuration and plugin for log shell commands.
 - [Zed](https://zed.dev/) editor themes and settings.

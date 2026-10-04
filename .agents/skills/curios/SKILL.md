@@ -142,13 +142,14 @@ curios-dotfiles --themes 'Gruvbox Dark' $HOME
 ```
 
 Theme configuration is read from `$HOME/.curios/themes/themes.json`. It lists
-all themes available through `curios-dotfiles --list`. It defines the theme files used
-by the COSMIC desktop environment (`*.ron` files), Alacritty, and Ghostty. It also
-defines the theme names used by `herdr`, `nvim`, `opencode`, and `zeditor`, and the
-base color for the Brave browser.
-Wallpapers are stored under `$HOME/.curios/wallpapers/`. The theme configuration file
-also defines the wallpapers directory with the "wallpapers" key, so a theme change
-can set the wallpaper.
+all themes available through `curios-dotfiles --list`. It defines the theme files
+used by the COSMIC desktop environment (`*.ron` files), Alacritty, and Ghostty.
+It also defines the theme names used by `nvim`, and `zeditor`, and the base
+color for the Brave browser.
+Wallpapers are stored under `$HOME/.curios/wallpapers/`. Each theme can define its
+own wallpapers sub-directory with the "wallpapers" key. Check which wallpapers
+directory is currently used with:
+`cat $HOME/.config/cosmic/com.system76.CosmicBackground/v1/all | grep "source"`
 
 Change the COSMIC keyboard layout (e.g. French) with: `curios-dotfiles --lang fr`
 The current system keyboard setting can be found with: `curios-update --nixos-option curios.system.keyboard`
