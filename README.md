@@ -9,9 +9,24 @@ These are [Curi*OS*](https://github.com/CuriosLabs/CuriOS)'s opinionated configu
 These dotfiles are meant to be installed with the [curios-dotfiles](https://github.com/CuriosLabs/curios-dotfiles) program.
 It comes pre-installed with [CuriOS](https://github.com/CuriosLabs/CuriOS).
 
+1. (Optional) Check that your current configuration points to this repository:
+
+  ```bash
+  nixos-option -r curios.core.dotfiles
+  ```
+
+2. (Optional) Upgrade the dotfiles and themes to the latest version from this repository:
+
+  ```bash
+  curios-dotfiles --upgrade "$HOME"
+  ```
+
+3. Open `curios-manager` (Shortcut: `Super+Return`).
+4. Go to the `Themes` menu, then choose a theme from the list.
+
 ## Features
 
-- COSMIC desktop environment configuration files.
+- COSMIC desktop environment configuration files and themes.
 - Alacritty and Ghostty terminal themes.
 - [OpenCode](https://opencode.ai/) configuration and plugin for log shell commands.
 - [Zed](https://zed.dev/) editor themes and settings.
@@ -22,7 +37,7 @@ It comes pre-installed with [CuriOS](https://github.com/CuriosLabs/CuriOS).
 - AI agent skills for the Curi*OS* system, [herdr](https://github.com/herdrdev/herdr),
   Docker, Brave browser and [Basecamp](https://github.com/basecamp/basecamp-cli).
 
-## Color and theme
+## Colors and themes
 
 Available themes are:
 
@@ -39,7 +54,7 @@ Available themes are:
 
 References:
 
-- [iTerm2 colors schemes](https://iterm2colorschemes.com/) for terminal colors.
+- [iTerm2 color schemes](https://iterm2colorschemes.com/) for terminal colors.
 - [COSMIC themes](https://cosmic-themes.org/).
 
 ## Build, Test, and Development Commands
