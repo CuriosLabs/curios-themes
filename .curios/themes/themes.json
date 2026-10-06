@@ -39,7 +39,7 @@
     },
     "Hackers": {
       "alacritty_theme": "~/.config/alacritty/Hackers-Green.toml",
-      "color": "#000000",
+      "color": "#020f01",
       "cosmic_theme": "~/.curios/themes/Hackers-Green.ron",
       "ghostty_theme": "~/.config/ghostty/Hackers-Green.config",
       "nvim": "melange",
