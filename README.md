@@ -41,16 +41,26 @@ It comes pre-installed with [CuriOS](https://github.com/CuriosLabs/CuriOS).
 
 Available themes are:
 
-- Catppuccin Macchiato
+- Catppuccin catppuccin-machiatto
+  ![Catppuccin colors](https://github.com/CuriosLabs/curios-themes/blob/testing/assets/catppuccin-machiatto.png?raw=true "Catppuccin palette")
 - COSMIC Dark
+  ![COSMIC dark colors](https://github.com/CuriosLabs/curios-themes/blob/testing/assets/cosmic-dark.png?raw=true "Cosmic palette")
 - Everforest Medium
+  ![Everforest colors](https://github.com/CuriosLabs/curios-themes/blob/testing/assets/everforest.png?raw=true "Everforest palette")
 - Gruvbox Dark
+  ![Gruvbox colors](https://github.com/CuriosLabs/curios-themes/blob/testing/assets/gruvbox-dark.png?raw=true "Gruvbox palette")
 - Hackers Green
+  ![Hackers colors](https://github.com/CuriosLabs/curios-themes/blob/testing/assets/hackers-green.png?raw=true "Hackers green palette")
 - Kanagawa
+  ![Kanagawa colors](https://github.com/CuriosLabs/curios-themes/blob/testing/assets/kanagawa.png?raw=true "Kanagawa palette")
 - Nord Dark
+  ![Nord dark colors](https://github.com/CuriosLabs/curios-themes/blob/testing/assets/nord-dark.png?raw=true "Nord dark palette")
 - Nord Light
+  ![Nord Light colors](https://github.com/CuriosLabs/curios-themes/blob/testing/assets/nord-light.png?raw=true "Nord light palette")
 - One Dark (default)
+  ![One dark colors](https://github.com/CuriosLabs/curios-themes/blob/testing/assets/one-dark.png?raw=true "One dark palette")
 - Tokyo Night
+  ![Tokyo night colors](https://github.com/CuriosLabs/curios-themes/blob/testing/assets/tokyo-night.png?raw=true "Tokyo night palette")
 
 References:
 
