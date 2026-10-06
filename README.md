@@ -9,6 +9,21 @@ These are [Curi*OS*](https://github.com/CuriosLabs/CuriOS)'s opinionated configu
 These dotfiles are meant to be installed with the [curios-dotfiles](https://github.com/CuriosLabs/curios-dotfiles) program.
 It comes pre-installed with [CuriOS](https://github.com/CuriosLabs/CuriOS).
 
+1. (Optional) Check that Your current configuration point to repository:
+
+  ```bash
+  nixos-option -r curios.core.dotfiles
+  ```
+
+2. (Optional) Upgrade the dotfiles and themes to the latest version from this repository:
+
+  ```bash
+  curios-dotfiles --upgrade "$HOME"
+  ```
+
+3. Open `curios-manager` (Shortcut: `Super+Return`).
+4. Go to the `Themes` menu, then choose a theme from the list.
+
 ## Features
 
 - COSMIC desktop environment configuration files and themes.
