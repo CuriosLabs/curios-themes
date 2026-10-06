@@ -42,6 +42,13 @@ It comes pre-installed with [CuriOS](https://github.com/CuriosLabs/CuriOS).
 Available themes are:
 
 - Catppuccin Macchiato
+
+| Normal                                                                               | Bright                                                                               |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| <span style="display:inline-block;width:24px;height:24px;background:#494d64"></span> | <span style="display:inline-block;width:24px;height:24px;background:#5b6078"></span> |
+| <span style="display:inline-block;width:24px;height:24px;background:#ed8796"></span> | <span style="display:inline-block;width:24px;height:24px;background:#ec7486"></span> |
+| <span style="display:inline-block;width:24px;height:24px;background:#a6da95"></span> | <span style="display:inline-block;width:24px;height:24px;background:#8ccf7f"></span> |
+
 - COSMIC Dark
 - Everforest Medium
 - Gruvbox Dark
