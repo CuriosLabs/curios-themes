@@ -10,10 +10,10 @@ default:
 # Linting AI agents skill TS files.
 lint:
   @echo 'Linting TypeScript files...'
-  NODE_PATH=$(npm root -g) eslint -c ./.agents/skills/brave-tools/scripts/eslint.config.mjs ./.agents/skills/brave-tools/scripts/*.ts && echo 'brave-tools: SUCCESS'
-  NODE_PATH=$(npm root -g) eslint -c ./.agents/skills/email/scripts/eslint.config.mjs ./.agents/skills/email/scripts/*.ts && echo 'Email-Skill: SUCCESS'
-  NODE_PATH=$(npm root -g) eslint -c ./.pi/agent/extensions/eslint.config.mjs ./.pi/agent/extensions/*.ts && echo 'Pi Extensions: SUCCESS'
-  NODE_PATH=$(npm root -g) eslint -c ./.pi/agent/extensions/eslint.config.mjs ./.config/opencode/plugins/*.ts && echo 'Opencode Plugins: SUCCESS'
+  NODE_PATH=$(npm root -g) eslint -c ./dotfiles/.agents/skills/brave-tools/scripts/eslint.config.mjs ./dotfiles/.agents/skills/brave-tools/scripts/*.ts && echo 'brave-tools: SUCCESS'
+  NODE_PATH=$(npm root -g) eslint -c ./dotfiles/.agents/skills/email/scripts/eslint.config.mjs ./dotfiles/.agents/skills/email/scripts/*.ts && echo 'Email-Skill: SUCCESS'
+  NODE_PATH=$(npm root -g) eslint -c ./dotfiles/.pi/agent/extensions/eslint.config.mjs ./dotfiles/.pi/agent/extensions/*.ts && echo 'Pi Extensions: SUCCESS'
+  NODE_PATH=$(npm root -g) eslint -c ./dotfiles/.pi/agent/extensions/eslint.config.mjs ./dotfiles/.config/opencode/plugins/*.ts && echo 'Opencode Plugins: SUCCESS'
 
 # Complete publish process: lint, tag and finally push on github.
 publish VERSION:
