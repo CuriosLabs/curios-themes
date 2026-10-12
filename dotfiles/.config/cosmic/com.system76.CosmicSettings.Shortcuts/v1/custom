@@ -30,7 +30,7 @@
         ],
         key: "Delete",
         description: Some("Process Management - btop"),
-    ): Spawn("xdg-terminal-exec btop"),
+    ): Spawn("cosmic-monitor"),
     (
         modifiers: [
             Super,
