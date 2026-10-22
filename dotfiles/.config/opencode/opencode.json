@@ -1,33 +1,42 @@
 {
   "$schema": "https://opencode.ai/config.json",
   // Settings
-  "permission": {
-    "edit": "allow",
-    "bash": {
-      "*": "allow",
-      "cat *": "allow",
-      "fd *": "allow",
-      "find *": "allow",
-      "git *": "ask",
-      "git commit *": "ask",
-      "git push *": "deny",
-      "grep *": "allow",
-      "ls *": "allow",
-      "rm *": "deny",
-      "sudo *": "deny"
-    },
-    "glob": "allow",
-    "grep": "allow",
-    "list": "allow",
-    "read": {
-      "*": "allow",
-      "*.env": "deny",
-      "*.env.*": "deny",
-    },
-    "webfetch": "allow",
-    "websearch": "allow"
-  },
-  "autoupdate": false,
+  "permissions": [
+    // Edit - allow all
+    { "action": "edit", "resource": "*", "effect": "allow" },
+
+    // Shell (bash) - ordered from most specific to least specific
+    { "action": "shell", "resource": "git push *", "effect": "deny" },
+    { "action": "shell", "resource": "git commit *", "effect": "ask" },
+    { "action": "shell", "resource": "git *", "effect": "ask" },
+    { "action": "shell", "resource": "rm *", "effect": "deny" },
+    { "action": "shell", "resource": "sudo *", "effect": "deny" },
+    { "action": "shell", "resource": "cat *", "effect": "allow" },
+    { "action": "shell", "resource": "fd *", "effect": "allow" },
+    { "action": "shell", "resource": "find *", "effect": "allow" },
+    { "action": "shell", "resource": "grep *", "effect": "allow" },
+    { "action": "shell", "resource": "ls *", "effect": "allow" },
+    { "action": "shell", "resource": "*", "effect": "allow" },
+
+    // File tools
+    { "action": "glob", "resource": "*", "effect": "allow" },
+    { "action": "grep", "resource": "*", "effect": "allow" },
+    { "action": "list", "resource": "*", "effect": "allow" },
+
+    // Read - deny .env files first, then allow all
+    { "action": "read", "resource": "*.env.*", "effect": "deny" },
+    { "action": "read", "resource": "*.env", "effect": "deny" },
+    { "action": "read", "resource": "*", "effect": "allow" },
+
+    // Web tools
+    { "action": "webfetch", "resource": "*", "effect": "allow" },
+    { "action": "websearch", "resource": "*", "effect": "allow" }
+  ],
+  "update": "disable",
+  // Plugins
+  "plugins": [
+    "./plugins/log-shell.ts"
+  ],
   // LLMs Providers - Adjust to your real configuration
-  "provider": {}
+  "providers": {}
 }
