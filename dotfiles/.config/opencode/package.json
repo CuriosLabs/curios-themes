@@ -1,0 +1,7 @@
+{
+  "name": "opencode-config",
+  "private": true,
+  "dependencies": {
+    "@opencode/plugin": "^2.0.0"
+  }
+}
