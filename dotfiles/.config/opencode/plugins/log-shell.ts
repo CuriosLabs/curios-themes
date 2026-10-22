@@ -75,9 +75,9 @@ export default Plugin.define({
     // Check rotation on plugin load
     checkDailyRotation();
 
-    // 1. Intercept bash tool calls from the LLM
+    // 1. Intercept shell tool calls from the LLM
     await ctx.tool.hook("execute.before", (event) => {
-      if (event.tool === "bash") {
+      if (event.tool === "shell") {
         const args = event.input as { command?: string; description?: string };
         const command = args?.command;
         const description = args?.description;
@@ -98,13 +98,6 @@ export default Plugin.define({
         // Stream ended or error
       }
     })();
-
-    // 3. Capture user prompts (replaces v1 tui.command.execute for auditing)
-    await ctx.session.hook("prompt", (event) => {
-      if (event.prompt.text) {
-        logCommand(event.prompt.text, "user prompt");
-      }
-    });
 
     // Return cleanup function to abort the event subscription
     return () => controller.abort();
