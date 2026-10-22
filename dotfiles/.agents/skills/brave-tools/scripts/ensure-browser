@@ -13,17 +13,11 @@ if ! ss -tln | grep -q ":$PORT "; then
     exit 1
   fi
 
-  # AppArmor only allows user-data under ~/.config/BraveSoftware (not /tmp).
-  # Prune leftover AI profiles when no debug browser is running so they do
-  # not accumulate across reboots the way /tmp would have auto-cleared them.
-  PROFILE_ROOT="$HOME/.config/BraveSoftware"
-  for d in "$PROFILE_ROOT"/Brave-AI-Profile-*; do
-    [ -e "$d" ] || continue
-    rm -rf "$d"
-  done
-
+  # Copy Brave default profile to a temporary directory.
+  PROFILE_ROOT="/tmp/.com.brave.Brave.profiles"
+  mkdir -p "$PROFILE_ROOT"
   PROFILE_DIR=$(mktemp -d -p "$PROFILE_ROOT" Brave-AI-Profile-XXXXXX)
-  DEFAULT_PROFILE="$PROFILE_ROOT/Brave-Browser"
+  DEFAULT_PROFILE="$HOME/.config/BraveSoftware/Brave-Browser"
   if [ -d "$DEFAULT_PROFILE" ]; then
     echo "Copying default Brave profile to $PROFILE_DIR..."
     cp -rp "$DEFAULT_PROFILE/." "$PROFILE_DIR/"
