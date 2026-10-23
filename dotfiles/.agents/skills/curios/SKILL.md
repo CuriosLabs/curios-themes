@@ -56,7 +56,13 @@ sudo curios-update --update
 
 ### Upgrade the system
 
-Check if a new version of CuriOS is available and, if so, upgrade (this also runs an update):
+Check if a new version of CuriOS is available:
+
+```bash
+curios-update --check --verbose
+```
+
+and, if so, upgrade (this also runs an update):
 
 ```bash
 sudo curios-update --upgrade
@@ -185,9 +191,10 @@ The same documentation should be available offline here: `/etc/nixos/docs/`.
 
 ## Advanced usage
 
-**NEVER** edit files under `/etc/nixos/` except `/etc/nixos/settings.nix`.
-That file is the **only** NixOS configuration that is preserved across system
-upgrades. Any other file in `/etc/nixos/` will be overwritten on upgrade.
+**NEVER** edit files under `/etc/nixos/` except `/etc/nixos/settings.nix` and
+`/etc/nixos/modules.json`.
+Those 2 files are the **only** NixOS configuration files that are preserved across
+system upgrades. Any other file in `/etc/nixos/` will be overwritten on upgrade.
 
 `/etc/nixos/settings.nix` requires `sudo` to write. AI agents usually do **not**
 have sudo rights. Do **not** run `sudo` yourself. Prepare the new file in `/tmp`,
