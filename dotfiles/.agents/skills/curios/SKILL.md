@@ -56,7 +56,13 @@ sudo curios-update --update
 
 ### Upgrade the system
 
-Check if a new version of CuriOS is available and, if so, upgrade (this also runs an update):
+Check if a new version of CuriOS is available:
+
+```bash
+curios-update --check --verbose
+```
+
+and, if so, upgrade (this also runs an update):
 
 ```bash
 sudo curios-update --upgrade
