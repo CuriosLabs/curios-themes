@@ -144,7 +144,7 @@ Change the current theme with:
 
 ```bash
 # Change the user's $HOME desktop theme to Gruvbox Dark
-curios-dotfiles --themes 'Gruvbox Dark' $HOME
+curios-dotfiles --themes 'Gruvbox Dark' "$HOME"
 ```
 
 Theme configuration is read from `$HOME/.curios/themes/themes.json`. It lists
@@ -159,6 +159,13 @@ directory is currently used with:
 
 Change the COSMIC keyboard layout (e.g. French) with: `curios-dotfiles --lang fr`
 The current system keyboard setting can be found with: `curios-update --nixos-option curios.system.keyboard`
+
+Themes are sourced from a Git repository defined by `curios-update --nixos-option curios.core.dotfiles.url`
+and `curios-update --nixos-option curios.core.source.branch`. Themes and dotfiles
+can be upgraded from the Git repository source with the command:
+`curios-dotfiles --upgrade --lang us "$HOME"`
+By default, the COSMIC keyboard layout is set to "us". Change it if necessary
+with the "--lang" option.
 
 ## TUI manager
 
