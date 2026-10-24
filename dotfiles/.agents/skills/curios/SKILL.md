@@ -9,7 +9,7 @@ description:
   using the `curios-dotfiles` tool.
 metadata:
   author: CuriosLabs
-  version: "1.4.0"
+  version: "1.5.0"
 ---
 
 # Curios System Manager Skill
