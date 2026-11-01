@@ -181,6 +181,36 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 bindkey '^f' autosuggest-accept # OR use bindkey -e for an emulation of VIM key bindings
 bindkey '^p' history-search-backward # search through history based on completion
 bindkey '^n' history-search-forward
+# fzf history search with Ctrl+h
+fzf-history-widget() {
+  local selected
+  selected=$(history | fzf --tac --no-sort --height 40% --reverse \
+    --prompt="❯ " \
+    --preview 'echo {}' \
+    --preview-window 'up:3:wrap')
+  if [ -n "$selected" ]; then
+    # Remove the history number prefix
+    local cmd="${selected#*  }"
+    print -z "$cmd"
+  fi
+}
+zle -N fzf-history-widget
+bindkey '^h' fzf-history-widget
+
+# catz: cat + fzf search in a file with context preview (2 lines before/after)
+catz() {
+  local file="$1"
+  if [ ! -f "$file" ]; then
+    echo "Usage: catz <file>" >&2
+    return 1
+  fi
+
+  fzf --preview "bat --style=numbers --color=always --line-range \$(( {n}+1 ))::2 '$file'" \
+    --preview-window 'up:5' \
+    --header "↑↓ naviguate • Enter select • Esc cancel" \
+    --ghost "Type something..." \
+    < "$file"
+}
 
 # Shell integrations
 
@@ -189,7 +219,16 @@ bindkey '^n' history-search-forward
 eval "$(fzf --zsh)"
 
 # zoxide integration
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
+
+# List directory with eza after zoxide jump
+function z() {
+  __zoxide_z "$@" && eza -l --icons=auto
+}
+
+function zi() {
+  __zoxide_zi "$@" && eza -l --icons=auto
+}
 
 # Add npm local bin folder to $PATH
 export PATH="$HOME/.npm-packages/bin:$PATH"

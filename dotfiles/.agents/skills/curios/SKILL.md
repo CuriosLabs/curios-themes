@@ -9,7 +9,7 @@ description:
   using the `curios-dotfiles` tool.
 metadata:
   author: CuriosLabs
-  version: "1.4.0"
+  version: "1.6.0"
 ---
 
 # Curios System Manager Skill
@@ -38,6 +38,10 @@ wallpapers, and themes for the COSMIC desktop environment. It leverages the
 | Query a NixOS/CuriOS option | `curios-update --nixos-option <key>` |
 | Update a CuriOS module setting | `sudo curios-update --update-module <key> <value>` |
 | Show all CuriOS module settings as JSON | `curios-update --show-modules` |
+| Search for a NixOS service by name | `nixos-option services \| grep -i <name>` |
+| List all options of a NixOS service | `nixos-option -r services.<name>` |
+| Search for a NixOS program module by name | `nixos-option programs \| grep -i <name>` |
+| List all options of a NixOS program module | `nixos-option -r programs.<name>` |
 | Search for a NixOS package by name | `curios-update --search-pkgs <name>` |
 | Install a NixOS package | `sudo curios-update --add-pkg <attr_name>` |
 | Determine system language/keyboard settings | `curios-update --nixos-option curios.system.keyboard` |
@@ -56,7 +60,13 @@ sudo curios-update --update
 
 ### Upgrade the system
 
-Check if a new version of CuriOS is available and, if so, upgrade (this also runs an update):
+Check if a new version of CuriOS is available:
+
+```bash
+curios-update --check --verbose
+```
+
+and, if so, upgrade (this also runs an update):
 
 ```bash
 sudo curios-update --upgrade
@@ -93,8 +103,48 @@ All modules can be shown (JSON output) with:
 curios-update --show-modules
 ```
 
-**IF** a package does **NOT** exist as a CuriOS module, it should be searched
-and installed as a regular NixOS package:
+**IF** a package does **NOT** exist as a CuriOS module, you **MUST** then check
+whether a NixOS **service** exists for it **BEFORE** falling back to a regular
+NixOS package. A NixOS service is usually a server/daemon: installing the bare
+package (`pkgs.<name>`) does little, while configuring the options under
+`services.<name>.*` gives an operational service started and managed by systemd.
+
+```bash
+# Search for a service matching the name (case-insensitive)
+nixos-option services | grep -i <name>
+# If grep matches, list all the options of this service (recursive)
+nixos-option -r services.<name>
+# Configure the service via its options in /etc/nixos/settings.nix,
+# e.g. services.unifi.enable = true; then apply the change and update the
+# system: see the "## Advanced usage" workflow below
+```
+
+Like all `services.*` options, they are set in `/etc/nixos/settings.nix`; to
+prepare, validate and apply the change, follow the **Advanced usage** workflow
+below.
+
+**IF** no NixOS service matches, check next whether a NixOS **program module**
+exists (`programs.<name>.*`). Unlike a service, a program module is a
+user-facing application: `programs.<name>.enable = true` installs the package
+system-wide and may add system-wide configuration (e.g.
+`programs.firefox.preferences`), but it does **NOT** start a daemon. Some
+packages have both a `services.*` and a `programs.*` module (e.g. Emacs).
+
+```bash
+# Search for a program module matching the name (case-insensitive)
+nixos-option programs | grep -i <name>
+# If grep matches, list all the options of this program module (recursive)
+nixos-option -r programs.<name>
+# Configure it via its options in /etc/nixos/settings.nix,
+# e.g. programs.<name>.enable = true; then apply: see "## Advanced usage" below
+```
+
+So the search order is always: **CuriOS module → NixOS service (`services.*`)
+→ NixOS program module (`programs.*`) → NixOS package**.
+
+**IF** a package does **NOT** exist as a CuriOS module, **NOR** as a NixOS service,
+**NOR** as a NixOS program module, it should be searched and installed as a
+regular NixOS package:
 
 ```bash
 # Notice the 'package_attr_name' value of the JSON output; the first result should be the best match.
@@ -106,8 +156,9 @@ sudo curios-update --add-pkg <pkg_attr_name>
 
 ## Flatpak
 
-IF an application does NOT exist as a CuriOS module OR a NixOS package, THEN it can
-be installed as a Flatpak. CuriOS comes with the "flathub" and "cosmic" repositories pre-configured.
+IF an application does NOT exist as a CuriOS module, a NixOS service, a NixOS
+program module OR a NixOS package, THEN it can be installed as a Flatpak.
+CuriOS comes with the "flathub" and "cosmic" repositories pre-configured.
 
 ```bash
 # List remote repositories
@@ -138,7 +189,7 @@ Change the current theme with:
 
 ```bash
 # Change the user's $HOME desktop theme to Gruvbox Dark
-curios-dotfiles --themes 'Gruvbox Dark' $HOME
+curios-dotfiles --themes 'Gruvbox Dark' "$HOME"
 ```
 
 Theme configuration is read from `$HOME/.curios/themes/themes.json`. It lists
@@ -153,6 +204,13 @@ directory is currently used with:
 
 Change the COSMIC keyboard layout (e.g. French) with: `curios-dotfiles --lang fr`
 The current system keyboard setting can be found with: `curios-update --nixos-option curios.system.keyboard`
+
+Themes are sourced from a Git repository defined by `curios-update --nixos-option curios.core.dotfiles.url`
+and `curios-update --nixos-option curios.core.source.branch`. Themes and dotfiles
+can be upgraded from the Git repository source with the command:
+`curios-dotfiles --upgrade --lang us "$HOME"`
+By default, the COSMIC keyboard layout is set to "us". Change it if necessary
+with the "--lang" option.
 
 ## TUI manager
 
@@ -173,7 +231,7 @@ The same documentation should be available offline here: `/etc/nixos/docs/`.
 ## When to use me
 
 - When the user wants to update their system or install a package.
-- When a user needs to search for or install a new NixOS package.
+- When a user needs to search for a NixOS service (server/daemon) or install a new NixOS package.
 - When modifying CuriOS-specific desktop or system modules (e.g., changing
   timezones, enabling browsers).
 - When checking for system updates or upgrading to a new CuriOS release.
@@ -185,21 +243,41 @@ The same documentation should be available offline here: `/etc/nixos/docs/`.
 
 ## Advanced usage
 
-**NEVER** edit files under `/etc/nixos/` except `/etc/nixos/settings.nix`.
-That file is the **only** NixOS configuration that is preserved across system
-upgrades. Any other file in `/etc/nixos/` will be overwritten on upgrade.
+**NEVER** edit files under `/etc/nixos/` except `/etc/nixos/settings.nix` and
+`/etc/nixos/modules.json`.
+Those 2 files are the **only** NixOS configuration files that are preserved across
+system upgrades. Any other file in `/etc/nixos/` will be overwritten on upgrade.
+
+This is also where NixOS **service** options are configured, e.g.
+`services.unifi.enable = true;` in the `services` attribute set of `settings.nix`.
 
 `/etc/nixos/settings.nix` requires `sudo` to write. AI agents usually do **not**
-have sudo rights. Do **not** run `sudo` yourself. Prepare the new file in `/tmp`,
-then launch the copy and the system update in **one** terminal via
-`xdg-terminal-exec`. That opens a new window where the user can type their sudo
-password:
+have sudo rights. Do **not** run `sudo` yourself. Use this safe workflow instead:
 
-```bash
-# 1. Agent: write the new settings to a temp file
-# 2. Agent: open a terminal so the user can authenticate, then apply
-xdg-terminal-exec bash -c 'sudo cp /tmp/settings.nix /etc/nixos/settings.nix && sudo curios-update --update'
-```
+1. **Start from the existing file** — always copy the current configuration to a
+   temp file first, never write from scratch:
+
+   ```bash
+   cp /etc/nixos/settings.nix /tmp/settings.nix
+   ```
+
+2. **Agent: modify the temp file** `/tmp/settings.nix` (add or change the desired
+   options, e.g. the `services.<name>.*` options of a service).
+3. **User validation** — show the user exactly what changed and wait for their
+   approval before applying anything:
+
+   ```bash
+   diff -u --color=always /etc/nixos/settings.nix /tmp/settings.nix
+   ```
+
+   The user can also open `/tmp/settings.nix` in an editor to review it manually.
+4. **User applies with sudo** — once validated, launch the copy and the system
+   update in **one** terminal via `xdg-terminal-exec`. That opens a new window
+   where the user types their sudo password:
+
+   ```bash
+   xdg-terminal-exec bash -c 'sudo cp /tmp/settings.nix /etc/nixos/settings.nix && sudo curios-update --update'
+   ```
 
 ## NixOS useful commands
 
@@ -212,6 +290,9 @@ xdg-terminal-exec sudo nix-collect-garbage --delete-older-than 3d
 nix-shell -p <pkg>
 # List user profile packages
 nix profile list
+# Validate the Nix syntax of a config file without evaluating it
+# (e.g. check /tmp/settings.nix before applying it to /etc/nixos/settings.nix)
+nix-instantiate --parse /tmp/settings.nix
 ```
 
 ## Important Notes
