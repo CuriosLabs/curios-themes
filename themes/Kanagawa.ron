@@ -70,7 +70,7 @@
     frosted_windows: true,
     frosted_system_interface: true,
     frosted_panel: true,
-    frosted_applets: true,
+    frosted_applets: false,
     frosted_maximized_apps: false,
     alpha_map: (
         extremely_low: 0.94,
