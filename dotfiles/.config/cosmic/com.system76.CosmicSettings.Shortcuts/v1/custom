@@ -30,7 +30,7 @@
         ],
         key: "Delete",
         description: Some("Process Management - btop"),
-    ): Spawn("xdg-terminal-exec btop"),
+    ): Spawn("cosmic-monitor"),
     (
         modifiers: [
             Super,
@@ -67,6 +67,6 @@
             Super,
         ],
         key: "v",
-        description: Some("Voxtype STT toggle recording"),
-    ): Spawn("voxtype record toggle"),
+        description: Some("Local voice dictation toggle - Hex by anoma.ly"),
+    ): Spawn("hex dictation toggle"),
 }

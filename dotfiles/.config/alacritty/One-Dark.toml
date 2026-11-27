@@ -5,6 +5,7 @@ shell = "/run/current-system/sw/bin/zsh"
 
 [window]
 opacity = 0.97
+blur = true
 
 [font]
 size = 12.0
