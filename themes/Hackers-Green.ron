@@ -1,6 +1,6 @@
 (
     palette: Dark((
-        name: "cosmic-dark",
+        name: "hackers-green",
         bright_red: "#FFA090FF",
         bright_green: "#5EDB8CFF",
         bright_orange: "#FFA37DFF",
